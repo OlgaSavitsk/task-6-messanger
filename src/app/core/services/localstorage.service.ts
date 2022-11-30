@@ -2,7 +2,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 export interface StorageUser {
-  token: string;
   name: string;
 }
 
@@ -39,7 +38,7 @@ export class LocalStorageService {
     if (!checkStorageData(storageData)) {
       this.currentData = '';
     } else {
-      const data: StorageUser = JSON.parse(storageData!);
+      const data: string = JSON.parse(storageData!);
       this.currentData = data;
     }
     return this.currentData;
@@ -49,8 +48,8 @@ export class LocalStorageService {
     return this.currentData;
   }
 
-  setStorageData({ token, name }: StorageUser, storageName: string): void {
-    this.currentData = { token, name };
+  setStorageData({ name }: StorageUser, storageName: string): void {
+    this.currentData = name;
     this.saveToStorage(storageName);
   }
 

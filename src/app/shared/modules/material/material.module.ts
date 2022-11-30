@@ -15,6 +15,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [],
@@ -36,6 +37,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatExpansionModule,
   ],
 })
 export class MaterialModule {}

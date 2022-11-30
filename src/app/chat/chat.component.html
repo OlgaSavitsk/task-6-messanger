@@ -17,20 +17,31 @@
 
 <ng-template #block>
     <app-new-message (newItemEvent)="selectUser($event)" [currenUser]="currentUser"></app-new-message>
-    <span *ngIf="user === currentUser; else received">Your all received messages</span>
-    <ng-template #received>Sent messages to {{selectedUser}} </ng-template>
-    <div class="table-responsive d-flex flex-row col-md-6" *ngIf="user === currentUser; else sel">
+
+
+    <div class="table-responsive flex-col col-md-6" *ngIf="chatService.status; else sel">
+        <span>All Your Received Messages</span>
         <div class="col-md-2 d-flex align-items-start" style="padding: 0.9375rem 0.4rem">
-            <span class="mb-0 text-muted">{{user}}</span>
+            <span class="mb-0 text-muted font-weight-bold">{{currentUser}}</span>
         </div>
         <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
             <tbody>
                 <!-- row -->
                 <tr *ngFor="let message of chatService.messages">
-                    <td class="d-flex flex-col">
-                        <span
-                            class="badge badge-pill font-medium badge-danger mr-2 text-warning">{{message.title}}</span>
-                        <span class="text-dark">{{message.text}}</span>
+                    <td class="text-muted font-weight-bold">
+                        <p class="font-weight-bold">From: {{message.name}}</p>
+                    </td>
+                    <td class="d-flex flex-col col-md-6 w-100 p-3">
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        {{message.title}}
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <p>{{message.text}}</p>
+                            </mat-expansion-panel>
+                        </mat-accordion>
                     </td>
                     <td class="text-muted">{{message.createdAt | date: 'MM d, y, h:mm a'}}</td>
                 </tr>
@@ -40,24 +51,33 @@
     </div>
 
     <ng-template #sel>
-
-        <div class="col-md-2 d-flex align-items-start" style="padding: 0.9375rem 0.4rem">
-            <span class="mb-0 text-muted">{{user}}</span>
+        <div class="table-responsive flex-col col-md-6">
+            <span>All Sent Messages to {{selectedUser}} </span>
+            <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                <tbody>
+                    <!-- row -->
+                    <tr *ngFor="let message of chatService.messages">
+                        <td class="text-muted font-weight-bold">
+                            <p class="mb-0 text-muted font-weight-bold">{{selectedUser}}</p>
+                        </td>
+                        <td class="d-flex flex-col col-md-3 w-100 p-3">
+                            <mat-accordion>
+                                <mat-expansion-panel hideToggle>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            {{message.title}}
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>{{message.text}}</p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </td>
+                        <td class="text-muted">{{message.createdAt | date: 'MM d, y, h:mm a'}}</td>
+                    </tr>
+                    <!-- row -->
+                </tbody>
+            </table>
         </div>
-        <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
-            <tbody>
-                <!-- row -->
-                <tr *ngFor="let message of chatService.messages">
-                    <td class="d-flex flex-col">
-                        <span
-                            class="badge badge-pill font-medium badge-danger mr-2 text-warning">{{message.title}}</span>
-                        <span class="text-dark">{{message.text}}</span>
-                    </td>
-                    <td class="text-muted">{{message.createdAt | date: 'MM d, y, h:mm a'}}</td>
-                </tr>
-                <!-- row -->
-            </tbody>
-        </table>
 
     </ng-template>
 

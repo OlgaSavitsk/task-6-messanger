@@ -10,14 +10,8 @@
 
                 </mat-form-field>
 
-                <mat-form-field class="example-full-width">
-                    <mat-label>Recipient</mat-label>
-                    <mat-select formControlName="recipient" (selectionChange)="onSelect($event)">
-                        <mat-option *ngFor=" let name of chatService.usersName" [value]="name">
-                            {{name}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <ng-select [items]="usersName | async" placeholder="Recipient" autofocus bindValue="name"
+                    (change)="onSelect($event)" formControlName="recipient"></ng-select>
 
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Your message</mat-label>
