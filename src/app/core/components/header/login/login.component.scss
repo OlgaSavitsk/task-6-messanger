@@ -1,0 +1,51 @@
+:host {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+
+  &__control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+  }
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.login__button {
+  margin: 0;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #c2185b;
+  color: #ffffff;
+  font-size: large;
+  text-align: center;
+  cursor: pointer;
+}
+
+.mat-icon {
+  cursor: pointer;
+}
+
+@media (max-width: 470px) {
+  .container__control {
+    width: 100%;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+}

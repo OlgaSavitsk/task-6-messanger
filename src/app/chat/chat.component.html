@@ -1,0 +1,64 @@
+<div class="container" *ngIf="!chatService.joined; else block">
+    <div class="register-modal">
+        <form class="example-form form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+            <h2>LOGIN</h2>
+            <div class="form__container">
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Enter your name</mat-label>
+                    <input matInput class="form__input" type="email" formControlName='login' autocomplete="new-email">
+                </mat-form-field>
+
+            </div>
+            <button mat-button type="submit" class=" form__button" [disabled]="formGroup.invalid">LOGIN</button>
+        </form>
+    </div>
+</div>
+
+<ng-template #block>
+    <app-new-message (newItemEvent)="selectUser($event)" [currenUser]="currentUser"></app-new-message>
+    <span *ngIf="user === currentUser; else received">Your all received messages</span>
+    <ng-template #received>Sent messages to {{selectedUser}} </ng-template>
+    <div class="table-responsive d-flex flex-row col-md-6" *ngIf="user === currentUser; else sel">
+        <div class="col-md-2 d-flex align-items-start" style="padding: 0.9375rem 0.4rem">
+            <span class="mb-0 text-muted">{{user}}</span>
+        </div>
+        <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+            <tbody>
+                <!-- row -->
+                <tr *ngFor="let message of chatService.messages">
+                    <td class="d-flex flex-col">
+                        <span
+                            class="badge badge-pill font-medium badge-danger mr-2 text-warning">{{message.title}}</span>
+                        <span class="text-dark">{{message.text}}</span>
+                    </td>
+                    <td class="text-muted">{{message.createdAt | date: 'MM d, y, h:mm a'}}</td>
+                </tr>
+                <!-- row -->
+            </tbody>
+        </table>
+    </div>
+
+    <ng-template #sel>
+
+        <div class="col-md-2 d-flex align-items-start" style="padding: 0.9375rem 0.4rem">
+            <span class="mb-0 text-muted">{{user}}</span>
+        </div>
+        <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+            <tbody>
+                <!-- row -->
+                <tr *ngFor="let message of chatService.messages">
+                    <td class="d-flex flex-col">
+                        <span
+                            class="badge badge-pill font-medium badge-danger mr-2 text-warning">{{message.title}}</span>
+                        <span class="text-dark">{{message.text}}</span>
+                    </td>
+                    <td class="text-muted">{{message.createdAt | date: 'MM d, y, h:mm a'}}</td>
+                </tr>
+                <!-- row -->
+            </tbody>
+        </table>
+
+    </ng-template>
+
+</ng-template>
