@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@import '~@ng-select/ng-select/themes/material.theme.css';
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  text-align: center;
+  transition: all 1s ease-in-out;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #f4f7f6;
+  margin-top: 20px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #f5f5f5;
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mat-mdc-select-value {
+  color: #333;
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: #333;
+}
+
+.mat-toolbar.mat-primary {
+  background-color: #663bb8;
+}
+
+.mailbox-widget .custom-tab .nav-item .nav-link {
+  border: 0;
+  color: #fff;
+  border-bottom: 3px solid transparent;
+}
+.mailbox-widget .custom-tab .nav-item .nav-link.active {
+  background: 0 0;
+  color: #fff;
+  border-bottom: 3px solid #2cd07e;
+}
+.no-wrap td,
+.no-wrap th {
+  white-space: nowrap;
+}
+.table td,
+.table th {
+  padding: 0.9375rem 0.4rem;
+  vertical-align: top;
+  border-top: 1px solid rgba(120, 130, 140, 0.13);
+}
+.font-light {
+  font-weight: 300;
+}
+
+.ng-select {
+  width: 100%;
+}
+
+.ng-select .ng-select-container {
+  background: #f5f5f5;
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container,
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+.mat-expansion-panel {
+  background: #f5f5f5;
+}
+
+.mat-expansion-panel-content {
+  color: #333;
+}
+
+.mat-expansion-panel-header-title {
+  color: gold;
+}
+
+@media (max-width: 768px) {
+  .mdc-data-table__cell,
+  .mdc-data-table__header-cell {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .mdc-data-table__table {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .mdc-data-table__cell,
+  .mdc-data-table__header-cell {
+    padding: 0 5px !important;
+  }
+}
+
+.mat-mdc-progress-spinner {
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: 10px;
+}
+
+@media (max-width: 370px) {
+  .mdc-data-table__table {
+    max-width: 300px !important;
+    width: 100% !important;
+  }
+}

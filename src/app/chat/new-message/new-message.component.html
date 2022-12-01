@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="register-modal">
+        <form class="example-form form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+            <h2>New Message</h2>
+            <div class="form__container" *ngIf="chatService.joined">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Title</mat-label>
+                    <input matInput class="form__input" type="text" placeholder="Enter your name"
+                        formControlName="title" autocomplete="new-email">
+
+                </mat-form-field>
+
+                <ng-select [items]="usersName | async" placeholder="Recipient" autofocus bindValue="name"
+                    (change)="onSelect($event)" formControlName="recipient"></ng-select>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Your message</mat-label>
+                    <textarea matInput formControlName="messageText"></textarea>
+                </mat-form-field>
+            </div>
+            <button mat-button type="submit" class=" form__button" [disabled]="formGroup.invalid">SEND</button>
+        </form>
+    </div>
+</div>
