@@ -18,7 +18,7 @@
                     <textarea matInput formControlName="messageText"></textarea>
                 </mat-form-field>
             </div>
-            <button mat-button class="form__button">SEND</button>
+            <button mat-button type="submit" class=" form__button" [disabled]="formGroup.invalid">SEND</button>
         </form>
     </div>
 </div>

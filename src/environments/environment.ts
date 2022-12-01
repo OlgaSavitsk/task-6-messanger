@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'https://localhost:4000',
+  BASE_URL: 'https://chat-3xtl.onrender.com',
 };
 
 /*

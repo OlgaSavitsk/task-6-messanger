@@ -23,7 +23,7 @@ export class ChatService {
     private toastrService: NotificationService,
     private storageService: LocalStorageService
   ) {
-    this.socket = io('http://localhost:4000');
+    this.socket = io('https://chat-3xtl.onrender.com');
     this.currentName = this.storageService.loadFromLocalStorage('userName');
     this.getMessage();
   }
