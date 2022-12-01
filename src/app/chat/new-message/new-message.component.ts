@@ -36,18 +36,17 @@ export class NewMessageComponent {
     const { recipient, messageText, title } = this.formGroup.value;
     this.chatService.sendMessage(messageText, title, recipient);
     this.formGroup.reset();
-    this.setMessages();
+    if (this.currenUser !== this.selectedUser) {
+      this.chatService.renderSentMessage(this.selectedUser, this.currenUser);
+    } else {
+      this.chatService.renderReceivedMessage(this.currenUser);
+    }
   }
 
   onSelect(selectValue: any): void {
-    console.log(selectValue);
     this.selectedUser = selectValue;
     this.newItemEvent.emit(this.selectedUser);
     this.chatService.selectUser(this.selectedUser);
-    this.setMessages();
-  }
-
-  setMessages() {
     if (this.currenUser !== this.selectedUser) {
       this.chatService.renderSentMessage(this.selectedUser, this.currenUser);
     } else {
